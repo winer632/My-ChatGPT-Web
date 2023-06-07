@@ -148,13 +148,13 @@ const en: RequiredLocaleType = {
       Placeholder: "OpenAI API Key",
     },
     Usage: {
-      Title: "Account Balance",
+      Title: "Validity Query",
       SubTitle(used: any, total: any) {
-        return `Used this month $${used}, subscription $${total}`;
+        return `${total}`;
       },
       IsChecking: "Checking...",
       Check: "Check",
-      NoAccess: "Enter API Key to check balance",
+      NoAccess: "Enter the access code to view the validity period",
     },
     AccessCode: {
       Title: "Access Code",

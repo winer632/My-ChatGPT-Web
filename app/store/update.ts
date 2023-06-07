@@ -9,7 +9,7 @@ export interface UpdateStore {
   remoteVersion: string;
 
   used?: number;
-  subscription?: number;
+  subscription?: string;
   lastUpdateUsage: number;
 
   version: string;
