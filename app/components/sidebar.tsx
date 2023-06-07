@@ -156,7 +156,7 @@ export function SideBar(props: { className?: string }) {
         <ChatList narrow={shouldNarrow} />
       </div>
 
-      <button onClick={() => window.open(TIP_URL, "TIP")}>
+      <button onClick={() => (location.href = TIP_URL)}>
         订阅套餐购买访问密码
       </button>
 
