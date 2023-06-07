@@ -156,10 +156,9 @@ export function SideBar(props: { className?: string }) {
         <ChatList narrow={shouldNarrow} />
       </div>
 
-      <div>
-        <h6>打赏后联系站长获取访问密码 winer632@qq.com</h6>
-      </div>
-      <a href={TIP_URL} target="_blank">打赏站长</a>
+      <button onClick={() => window.open(TIP_URL, "TIP")}>
+        订阅套餐购买访问密码
+      </button>
 
       <div className={styles["sidebar-tail"]}>
         <div className={styles["sidebar-actions"]}>
@@ -184,7 +183,7 @@ export function SideBar(props: { className?: string }) {
             </a>
           </div> */}
         </div>
-      <div>
+        <div>
           <IconButton
             icon={<AddIcon />}
             text={shouldNarrow ? undefined : Locale.Home.NewChat}
