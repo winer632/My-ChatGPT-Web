@@ -20,6 +20,7 @@ import {
   MIN_SIDEBAR_WIDTH,
   NARROW_SIDEBAR_WIDTH,
   Path,
+  README_URL,
   TIP_URL,
 } from "../constant";
 
@@ -156,6 +157,7 @@ export function SideBar(props: { className?: string }) {
         <ChatList narrow={shouldNarrow} />
       </div>
 
+      <button onClick={() => (location.href = README_URL)}>使用说明</button>
       <button onClick={() => (location.href = TIP_URL)}>
         订阅套餐购买访问密码
       </button>
@@ -177,11 +179,6 @@ export function SideBar(props: { className?: string }) {
               <IconButton icon={<SettingsIcon />} shadow />
             </Link>
           </div>
-          {/* <div className={styles["sidebar-action"]}>
-            <a href={TIP_URL} target="_blank">
-              <IconButton icon={<GithubIcon />} shadow />
-            </a>
-          </div> */}
         </div>
         <div>
           <IconButton
