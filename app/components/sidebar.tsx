@@ -158,7 +158,10 @@ export function SideBar(props: { className?: string }) {
       </div>
 
       <button onClick={() => (location.href = README_URL)}>使用说明</button>
-      <button onClick={() => (location.href = TIP_URL)}>
+      <button
+        onClick={() => (location.href = TIP_URL)}
+        style={{ marginTop: "10px" }}
+      >
         订阅套餐购买访问密码
       </button>
 

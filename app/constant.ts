@@ -2,7 +2,7 @@ export const OWNER = "openai";
 export const REPO = "My-ChatGPT";
 export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
 export const TIP_URL = `https://pay.bizoe.tech/`;
-export const README_URL = `https://zhuanlan.zhihu.com/p/635737465?`;
+export const README_URL = `https://zhuanlan.zhihu.com/p/635737465`;
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
 export const UPDATE_URL = `${REPO_URL}#keep-updated`;
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
