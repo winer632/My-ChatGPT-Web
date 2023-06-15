@@ -64,7 +64,7 @@ export class ClientApi {
       .concat([
         {
           from: "human",
-          value: "Share from [My ChatGPT Web]: https://bizoe.tech/",
+          value: "Share from [bizoe.tech]: https://bizoe.tech/",
         },
       ]);
     // 敬告二开开发者们，为了开源大模型的发展，请不要修改上述消息，此消息用于后续数据清洗使用

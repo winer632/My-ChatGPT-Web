@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 const buildConfig = getBuildConfig();
 
 export const metadata = {
-  title: "My ChatGPT Web",
+  title: "ChatGPT China",
   description: "Your personal ChatGPT Chat Bot.",
   viewport: {
     width: "device-width",
@@ -20,7 +20,7 @@ export const metadata = {
     { media: "(prefers-color-scheme: dark)", color: "#151515" },
   ],
   appleWebApp: {
-    title: "My ChatGPT Web",
+    title: "ChatGPT China",
     statusBarStyle: "default",
   },
 };
