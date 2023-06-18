@@ -438,9 +438,7 @@ export function ImagePreviewer(props: {
 
           <div>
             <div className={styles["main-title"]}>ChatGPT China</div>
-            <div className={styles["sub-title"]}>
-              github.com/openai/My-ChatGPT
-            </div>
+            <div className={styles["sub-title"]}>bizoe.tech</div>
             <div className={styles["icons"]}>
               <ExportAvatar avatar={config.avatar} />
               <span className={styles["icon-space"]}>&</span>
