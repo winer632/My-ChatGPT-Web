@@ -13,9 +13,7 @@ import axios from "axios";
 
 export class ChatGPTApi implements LLMApi {
   public ChatPath = "v1/chat/completions";
-  public UsagePath = "dashboard/billing/usage";
-  public SubsPath = "dashboard/billing/subscription";
-
+  // return “/api/openai/v1/chat/completions”.
   path(path: string): string {
     let openaiUrl = useAccessStore.getState().openaiUrl;
     if (openaiUrl.endsWith("/")) {
@@ -70,6 +68,8 @@ export class ChatGPTApi implements LLMApi {
         () => controller.abort(),
         REQUEST_TIMEOUT_MS,
       );
+
+      console.log("[opeai] shouldStream is ", shouldStream);
 
       if (shouldStream) {
         let responseText = "";

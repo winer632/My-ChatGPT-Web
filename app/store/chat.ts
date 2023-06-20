@@ -278,6 +278,7 @@ export const useChatStore = create<ChatStore>()(
 
         // make request
         console.log("[User Input] ", sendMessages);
+        console.log("[Chat] api.llm.chat1");
         api.llm.chat({
           messages: sendMessages,
           config: { ...modelConfig, stream: true },
@@ -435,6 +436,7 @@ export const useChatStore = create<ChatStore>()(
               content: Locale.Store.Prompt.Topic,
             }),
           );
+          console.log("[Chat] api.llm.chat2");
           api.llm.chat({
             messages: topicMessages,
             config: {
@@ -484,6 +486,7 @@ export const useChatStore = create<ChatStore>()(
           historyMsgLength > modelConfig.compressMessageLengthThreshold &&
           modelConfig.sendMemory
         ) {
+          console.log("[Chat] api.llm.chat3");
           api.llm.chat({
             messages: toBeSummarizedMsgs.concat({
               role: "system",

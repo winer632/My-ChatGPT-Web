@@ -46,7 +46,7 @@ async function ValidityState(accessCode: string) {
     })
     .then((data) => {
       // Now data is an object with data property
-      console.log("[Auth] Validity request succeeded: response data is ", data);
+      console.log("[Auth] Validity response data is ", data);
       message = data.message;
       validation = data.validation;
       console.log("[Auth] openai validity: ", message);
@@ -64,9 +64,6 @@ export function auth(req: NextRequest) {
   console.log("[Auth] got auth token length:", authToken.length);
   // check if it is openai api key or user token
   const { accessCode, apiKey: token } = parseApiKey(authToken);
-  ValidityState(accessCode);
-  console.log("[Auth] got accessCode:", accessCode);
-  console.log("[Auth] got token:", token);
 
   const hashedCode = md5.hash(accessCode ?? "").trim();
 
@@ -77,6 +74,18 @@ export function auth(req: NextRequest) {
   console.log("[User IP] ", getIP(req));
   console.log("[Time] ", new Date().toLocaleString());
   console.log("[Auth] need code:", serverConfig.needCode);
+  if (serverConfig.needCode === true) {
+    console.log("serverConfig.needCode === true");
+    if (accessCode === null || accessCode === "") {
+      console.log("accessCode===null");
+      validation = "fail";
+    } else {
+      ValidityState(accessCode);
+    }
+  }
+
+  console.log("[Auth] got accessCode:", accessCode);
+  console.log("[Auth] got token:", token);
 
   // 现在不判断页面上填写的CODE和环境变量或者.env中配置的CODE是否一致，只要填写了CODE就可以用来做有效期校验
 
