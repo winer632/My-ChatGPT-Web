@@ -31,7 +31,7 @@ let validation = "";
 
 async function ValidityState(accessCode: string) {
   console.log("[Auth] ValidityState accessCode: ", accessCode);
-  const result = await fetch("https://service.bizoe.tech/v1/validity", {
+  const result = await fetch("https://service.bizoe.tech/v1/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

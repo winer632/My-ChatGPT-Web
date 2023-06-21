@@ -175,7 +175,7 @@ export class ChatGPTApi implements LLMApi {
 
     // send a POST request with the payload and the agent
     const result = await axios.post(
-      "https://service.bizoe.tech/v1/settings/validity",
+      "https://service.bizoe.tech/v1/validity",
       {
         access_key: accessCode,
       },
