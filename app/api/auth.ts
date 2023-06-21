@@ -57,7 +57,7 @@ async function ValidityState(accessCode: string) {
     });
 }
 
-export function auth(req: NextRequest) {
+export async function auth(req: NextRequest) {
   const authToken = req.headers.get("Authorization") ?? "";
   console.log("[Auth] got auth token:", authToken);
   console.log("[Auth] got auth token type:", typeof authToken);
@@ -80,7 +80,7 @@ export function auth(req: NextRequest) {
       console.log("accessCode===null");
       validation = "fail";
     } else {
-      ValidityState(accessCode);
+      await ValidityState(accessCode);
     }
   }
 
@@ -94,6 +94,12 @@ export function auth(req: NextRequest) {
     return {
       error: true,
       msg: !accessCode ? "empty access code" : "wrong access code",
+    };
+  }
+  if (validation == "insufficient quota") {
+    return {
+      error: true,
+      msg: message,
     };
   }
 
