@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  env: {
+    TTS_KEY: process.env.TTS_KEY,
+  },
   async rewrites() {
     const ret = [
       {

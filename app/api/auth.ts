@@ -69,6 +69,7 @@ export async function auth(req: NextRequest) {
 
   const serverConfig = getServerSideConfig();
   console.log("[Auth] allowed hashed codes: ", [...serverConfig.codes]);
+  console.log("[Auth] serverConfig is ", serverConfig);
   console.log("[Auth] got access code:", accessCode);
   console.log("[Auth] hashed access code:", hashedCode);
   console.log("[User IP] ", getIP(req));
