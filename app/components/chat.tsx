@@ -22,7 +22,7 @@ import AutoIcon from "../icons/auto.svg";
 import BottomIcon from "../icons/bottom.svg";
 import StopIcon from "../icons/pause.svg";
 
-import { tts } from "../client/tts";
+import { tts } from "../api/tts";
 
 import {
   ChatMessage,
