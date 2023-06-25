@@ -96,6 +96,7 @@ export class ChatGPTApi implements LLMApi {
 
             if (contentType?.startsWith("text/plain")) {
               responseText = await res.clone().text();
+              console.log("1.responseText is ", responseText)
               return finish();
             }
 
@@ -136,6 +137,7 @@ export class ChatGPTApi implements LLMApi {
               const delta = json.choices[0].delta.content;
               if (delta) {
                 responseText += delta;
+                console.log("2.responseText is ", responseText)
                 options.onUpdate?.(responseText, delta);
               }
             } catch (e) {
