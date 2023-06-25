@@ -22,6 +22,8 @@ import AutoIcon from "../icons/auto.svg";
 import BottomIcon from "../icons/bottom.svg";
 import StopIcon from "../icons/pause.svg";
 
+import { tts } from "../api/tts";
+
 import {
   ChatMessage,
   SubmitKey,
@@ -646,6 +648,15 @@ export function Chat() {
           ]
         : [],
     );
+  console.log(
+    "messages is ",
+    messages,
+    " messages length is ",
+    messages.length,
+  );
+  const botRecentMsg = messages[messages.length - 1];
+  console.log("botRecentMsg is ", botRecentMsg.content);
+  tts(botRecentMsg.content);
 
   const [showPromptModal, setShowPromptModal] = useState(false);
 

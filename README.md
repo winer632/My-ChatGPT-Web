@@ -1,6 +1,6 @@
 ### 环境变量
 
-请在.env或者vercel的环Settings->Environment Variables中设置如下两个环境变量
+请在.env或者vercel的 Settings->Environment Variables中设置如下两个环境变量
 OPENAI_API_KEY  （自己可用的OPENAI_API_KEY）
 CODE  （随便填一个值，填好之后会触发强制要求用户在设置页面填写访问密码的机制）
 
@@ -45,6 +45,15 @@ docker run -d -p 3000:3000 \
 如果你需要指定其他环境变量，请自行在上述命令中增加 `-e 环境变量=环境变量值` 来指定。
 
 ### 本地部署
+
+在开始写代码之前，需要在项目根目录新建一个 `.env.local` 文件，里面填入环境变量：
+
+```
+OPENAI_API_KEY=<your api key here>
+
+# 中国大陆用户，可以使用本项目自带的代理进行开发，你也可以自由选择其他代理地址
+BASE_URL=https://chatgpt1.nextweb.fun/api/proxy
+```
 
 在控制台运行下方命令：
 

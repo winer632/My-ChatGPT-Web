@@ -96,7 +96,7 @@ export class ChatGPTApi implements LLMApi {
 
             if (contentType?.startsWith("text/plain")) {
               responseText = await res.clone().text();
-              console.log("1.responseText is ", responseText)
+              console.log("1.responseText is ", responseText);
               return finish();
             }
 
@@ -137,7 +137,7 @@ export class ChatGPTApi implements LLMApi {
               const delta = json.choices[0].delta.content;
               if (delta) {
                 responseText += delta;
-                console.log("2.responseText is ", responseText)
+                console.log("2.responseText is ", responseText);
                 options.onUpdate?.(responseText, delta);
               }
             } catch (e) {
@@ -169,7 +169,7 @@ export class ChatGPTApi implements LLMApi {
   async usage() {
     // get the access code from the store
     const accessCode = useAccessStore.getState().accessCode;
-    console.log("[Request] openai usage access code: ", accessCode);
+    // console.log("[Request] openai usage access code: ", accessCode);
     // create an agent that ignores self-signed certificates
     const agent = new https.Agent({
       rejectUnauthorized: false,
