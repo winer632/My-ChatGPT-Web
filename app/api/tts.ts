@@ -1,15 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
-import sdk from "microsoft-cognitiveservices-speech-sdk";
+import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { getServerSideConfig } from "../config/server";
 
 export function tts(text: string) {
   // <code>
   "use strict";
   const serverConfig = getServerSideConfig();
-  console.log("serverConfig is ", serverConfig);
-  console.log("process.env.OPENAI_API_KEY is ", process.env.OPENAI_API_KEY);
-  console.log("process.env.CODE is ", process.env.CODE);
+  console.log("CODE is ", process.env.CODE);
 
   // replace with your own subscription key,
   // service region (e.g., "westus"), and
