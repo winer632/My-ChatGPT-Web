@@ -137,8 +137,10 @@ export class ChatGPTApi implements LLMApi {
               const delta = json.choices[0].delta.content;
               if (delta) {
                 responseText += delta;
-                console.log("2.responseText is ", responseText);
+                // console.log("2.responseText is ", responseText);
                 options.onUpdate?.(responseText, delta);
+              } else {
+                // console.log("3.responseText is ", responseText);
               }
             } catch (e) {
               console.error("[Request] parse error", text, msg);

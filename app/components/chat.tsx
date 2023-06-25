@@ -21,6 +21,7 @@ import DarkIcon from "../icons/dark.svg";
 import AutoIcon from "../icons/auto.svg";
 import BottomIcon from "../icons/bottom.svg";
 import StopIcon from "../icons/pause.svg";
+import SpeakIcon from "../icons/speak.svg";
 
 import { tts } from "../api/tts";
 
@@ -404,6 +405,8 @@ export function ChatActions(props: {
   );
 }
 
+let counter = 0;
+
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 
@@ -648,15 +651,40 @@ export function Chat() {
           ]
         : [],
     );
-  console.log(
-    "messages is ",
-    messages,
-    " messages length is ",
-    messages.length,
-  );
-  const botRecentMsg = messages[messages.length - 1];
-  console.log("botRecentMsg is ", botRecentMsg.content);
-  tts(botRecentMsg.content);
+
+  function findLastAssistantMessage(messages: ChatMessage[]) {
+    let lastAssistantMessage = null;
+    let assistantMessageCount = 0;
+    let assistantMessageIndex = 0;
+
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].role === "assistant") {
+        assistantMessageCount++;
+        if (!lastAssistantMessage) {
+          lastAssistantMessage = messages[i];
+          assistantMessageIndex = i + 1;
+        }
+      }
+    }
+
+    return {
+      lastAssistantMessage,
+      assistantMessageCount,
+      assistantMessageIndex,
+    };
+  }
+
+  let result = findLastAssistantMessage(messages);
+  let theLastAssistantMessage = result.lastAssistantMessage;
+  // let theAssistantMessageCount = result.assistantMessageCount;
+  // let theAssistantMessageIndex = result.assistantMessageIndex;
+
+  // console.log(
+  //   "messages is ",
+  //   messages,
+  //   " messages length is ",
+  //   messages.length,
+  // );
 
   const [showPromptModal, setShowPromptModal] = useState(false);
 
@@ -715,6 +743,18 @@ export function Chat() {
               title={Locale.Chat.Actions.Export}
               onClick={() => {
                 setShowExport(true);
+              }}
+            />
+          </div>
+          <div className="window-action-button">
+            <IconButton
+              icon={<SpeakIcon />}
+              bordered
+              title={Locale.Chat.Actions.Speak}
+              onClick={() => {
+                if (theLastAssistantMessage) {
+                  tts(theLastAssistantMessage.content);
+                }
               }}
             />
           </div>
