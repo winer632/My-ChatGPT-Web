@@ -46,15 +46,6 @@ docker run -d -p 3000:3000 \
 
 ### 本地部署
 
-在开始写代码之前，需要在项目根目录新建一个 `.env.local` 文件，里面填入环境变量：
-
-```
-OPENAI_API_KEY=<your api key here>
-
-# 中国大陆用户，可以使用本项目自带的代理进行开发，你也可以自由选择其他代理地址
-BASE_URL=https://chatgpt1.nextweb.fun/api/proxy
-```
-
 在控制台运行下方命令：
 
 ```shell

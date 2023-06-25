@@ -405,8 +405,6 @@ export function ChatActions(props: {
   );
 }
 
-let counter = 0;
-
 export function Chat() {
   type RenderMessage = ChatMessage & { preview?: boolean };
 

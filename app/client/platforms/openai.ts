@@ -96,7 +96,7 @@ export class ChatGPTApi implements LLMApi {
 
             if (contentType?.startsWith("text/plain")) {
               responseText = await res.clone().text();
-              console.log("1.responseText is ", responseText);
+              // console.log("1.responseText is ", responseText);
               return finish();
             }
 

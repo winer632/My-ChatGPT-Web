@@ -20,6 +20,7 @@ const en: RequiredLocaleType = {
       Stop: "Stop",
       Retry: "Retry",
       Delete: "Delete",
+      Speak: "Audio",
     },
     Rename: "Rename Chat",
     Typing: "Typing…",
