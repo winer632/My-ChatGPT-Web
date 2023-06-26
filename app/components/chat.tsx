@@ -22,6 +22,7 @@ import AutoIcon from "../icons/auto.svg";
 import BottomIcon from "../icons/bottom.svg";
 import StopIcon from "../icons/pause.svg";
 import SpeakIcon from "../icons/speak.svg";
+import MicIcon from "../icons/microphone.svg";
 
 import { tts } from "../api/tts";
 
@@ -64,10 +65,21 @@ import { useMaskStore } from "../store/mask";
 import { useCommand } from "../command";
 import { prettyObject } from "../utils/format";
 import { ExportMessageModal } from "./exporter";
+import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
 });
+
+var subscriptionKey = process.env.TTS_KEY as string;
+var serviceRegion = "southeastasia";
+
+const speechConfig = sdk.SpeechConfig.fromSubscription(
+  subscriptionKey,
+  serviceRegion,
+);
+speechConfig.speechRecognitionLanguage = "zh-CN";
+const speechRecognizer = new sdk.SpeechRecognizer(speechConfig);
 
 export function SessionConfigModel(props: { onClose: () => void }) {
   const chatStore = useChatStore();
@@ -401,6 +413,20 @@ export function ChatActions(props: {
       >
         <BreakIcon />
       </div>
+
+      <div
+        className={`${chatStyle["chat-input-action"]} clickable`}
+        onPointerDown={function () {
+          console.log("Pointer down on mic");
+          speechRecognizer.startContinuousRecognitionAsync();
+        }}
+        onPointerUp={function () {
+          console.log("Pointer up on mic");
+          speechRecognizer.stopContinuousRecognitionAsync();
+        }}
+      >
+        <MicIcon />
+      </div>
     </div>
   );
 }
@@ -426,6 +452,39 @@ export function Chat() {
   const [hitBottom, setHitBottom] = useState(true);
   const isMobileScreen = useMobileScreen();
   const navigate = useNavigate();
+
+  speechRecognizer.recognizing = (s, e) => {
+    // console.log(`RECOGNIZING: Text=${e.result.text}`);
+    setUserInput(e.result.text);
+  };
+
+  speechRecognizer.recognized = (s, e) => {
+    if (e.result.reason == sdk.ResultReason.RecognizedSpeech) {
+      // console.log(`RECOGNIZED: Text=${e.result.text}`);
+      setUserInput(e.result.text);
+    } else if (e.result.reason == sdk.ResultReason.NoMatch) {
+      // console.log("NOMATCH: Speech could not be recognized.");
+    }
+  };
+
+  speechRecognizer.canceled = (s, e) => {
+    console.log(`CANCELED: Reason=${e.reason}`);
+
+    if (e.reason == sdk.CancellationReason.Error) {
+      console.log(`"CANCELED: ErrorCode=${e.errorCode}`);
+      console.log(`"CANCELED: ErrorDetails=${e.errorDetails}`);
+      console.log(
+        "CANCELED: Did you set the speech resource key and region values?",
+      );
+    }
+
+    speechRecognizer.stopContinuousRecognitionAsync();
+  };
+
+  speechRecognizer.sessionStopped = (s, e) => {
+    // console.log("\n    Session stopped event.");
+    speechRecognizer.stopContinuousRecognitionAsync();
+  };
 
   const onChatBodyScroll = (e: HTMLElement) => {
     const isTouchBottom = e.scrollTop + e.clientHeight >= e.scrollHeight - 100;
@@ -490,6 +549,7 @@ export function Chat() {
 
   const doSubmit = (userInput: string) => {
     if (userInput.trim() === "") return;
+    console.log("[doSubmit]: userInput is ", userInput);
     setIsLoading(true);
     chatStore.onUserInput(userInput).then(() => setIsLoading(false));
     localStorage.setItem(LAST_INPUT_KEY, userInput);
