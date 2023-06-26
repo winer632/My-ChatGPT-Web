@@ -4,7 +4,7 @@ const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
     Unauthorized:
-      "访问密码不正确，或者超过了当天使用上限。请前往[设置](/#/settings)页输入正确的访问密码，或者填入你自己的 OpenAI API Key。如果是超出当天使用上限，每天凌晨三点会重置quota。请耐心等待",
+      "访问密码不正确，或者超过了当天使用上限。请前往[设置](/#/settings)页输入正确的访问密码。如果是超出当天使用上限，每天凌晨三点会重置quota。请耐心等待",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,

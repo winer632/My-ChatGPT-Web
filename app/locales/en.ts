@@ -5,7 +5,7 @@ const en: RequiredLocaleType = {
   WIP: "Coming Soon...",
   Error: {
     Unauthorized:
-      "Unauthorized access, please enter access code in settings page.",
+      "Unauthorized access or exceed the quota today, please enter access code in [settings](/#/settings) page. If you have exceeded your quota today please wait till 3:00 AM, quot will be reset then",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} messages`,
