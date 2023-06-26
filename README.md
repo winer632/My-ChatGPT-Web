@@ -3,6 +3,7 @@
 请在.env或者vercel的 Settings->Environment Variables中设置如下两个环境变量
 OPENAI_API_KEY  （自己可用的OPENAI_API_KEY）
 CODE  （随便填一个值，填好之后会触发强制要求用户在设置页面填写访问密码的机制）
+TTS_KEY (Azure的TTS服务对应的KEY)
 
 ### 每天聊天次数quota
 
