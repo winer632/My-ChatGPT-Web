@@ -98,6 +98,7 @@ export async function auth(req: NextRequest) {
       default:
         validation = "failure"; // Set validation to failure if accessCode does not match any of the cases
     }
+    console.log("before ValidityState, validation is ", validation);
     if (validation === "failure") {
       await ValidityState(accessCode);
     }

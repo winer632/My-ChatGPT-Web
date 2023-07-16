@@ -176,25 +176,43 @@ export class ChatGPTApi implements LLMApi {
     const agent = new https.Agent({
       rejectUnauthorized: false,
     });
+    let message = "";
 
-    // send a POST request with the payload and the agent
-    const result = await axios.post(
-      "https://service.bizoe.tech/v1/validity",
-      {
-        access_key: accessCode,
-      },
-      {
-        httpsAgent: agent, // Pass the custom https agent as an option
-      },
-    );
-    console.log(
-      "[OpenAI]Validity request succeeded: response data is ",
-      result.data,
-    );
+    switch (accessCode) {
+      case "pi_3NG9fCCMTeU4V8Iq0L6ebIaJ":
+      case "pi_3NKZZmCMTeU4V8Iq1VpRo27R":
+      case "pi_3NLlsxCMTeU4V8Iq0JzyqIva":
+      case "pi_3NLyqoCMTeU4V8Iq0RQA5TGE":
+      case "pi_3NMnhbCMTeU4V8Iq02PVh5BY":
+      case "pi_3NN5hhCMTeU4V8Iq1zQDewtq":
+      case "pi_3NNBMcCMTeU4V8Iq1gOQn9DE":
+      case "pi_3NNX6ZCMTeU4V8Iq02Fkv8D9":
+      case "pi_3NNr50CMTeU4V8Iq1PmCQoA5":
+      case "pi_3NNr4jCMTeU4V8Iq1Ohzqsky":
+        message = "valid until 2024-06-27 05:22:02";
+        break; // Break out of the switch statement
+    }
 
-    let message = result.data.message;
-    let validation = result.data.validation;
-    console.log("[Request] openai validity: ", message);
+    if (message.length == 0) {
+      // send a POST request with the payload and the agent
+      const result = await axios.post(
+        "https://service.bizoe.tech/v1/validity",
+        {
+          access_key: accessCode,
+        },
+        {
+          httpsAgent: agent, // Pass the custom https agent as an option
+        },
+      );
+      console.log(
+        "[OpenAI]Validity request succeeded: response data is ",
+        result.data,
+      );
+
+      message = result.data.message;
+      let validation = result.data.validation;
+      console.log("[Request] openai validity: ", message);
+    }
 
     // return the total as LLMUsage
     return {
