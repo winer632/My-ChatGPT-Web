@@ -177,7 +177,7 @@ export class ChatGPTApi implements LLMApi {
       rejectUnauthorized: false,
     });
     let message = "";
-
+    console.log("[usage] begin");
     switch (accessCode) {
       case "pi_3NG9fCCMTeU4V8Iq0L6ebIaJ":
       case "pi_3NKZZmCMTeU4V8Iq1VpRo27R":
@@ -192,7 +192,7 @@ export class ChatGPTApi implements LLMApi {
         message = "valid until 2024-06-27 05:22:02";
         break; // Break out of the switch statement
     }
-
+    console.log("[usage] message.length is ", message.length);
     if (message.length == 0) {
       // send a POST request with the payload and the agent
       const result = await axios.post(
