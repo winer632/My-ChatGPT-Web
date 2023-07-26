@@ -171,7 +171,7 @@ export class ChatGPTApi implements LLMApi {
   async usage() {
     // get the access code from the store
     const accessCode = useAccessStore.getState().accessCode;
-    // console.log("[Request] openai usage access code: ", accessCode);
+    console.log("[Request] openai usage access code: ", accessCode);
     // create an agent that ignores self-signed certificates
     const agent = new https.Agent({
       rejectUnauthorized: false,
