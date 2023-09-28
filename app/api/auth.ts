@@ -96,6 +96,7 @@ export async function auth(req: NextRequest) {
       case "pi_3NXyRjCMTeU4V8Iq0dfEuQJ7": // lizhenxing
       case "pi_3NfeaNCMTeU4V8Iq0frdmvXl": // liuqiao
       case "pi_3NpPBtCMTeU4V8Iq0o1NLDNF": // liuqiao
+      case "pi_3NvAs2CMTeU4V8Iq0l9DQvtk": // Mr Ju
         validation = "success"; // Set validation to success if accessCode matches any of the cases
         break; // Break out of the switch statement
       default:

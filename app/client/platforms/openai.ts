@@ -200,6 +200,9 @@ export class ChatGPTApi implements LLMApi {
       case "pi_3NpPBtCMTeU4V8Iq0o1NLDNF": // liuqiao
         message = "valid until 2024-09-12 13:33:02";
         break;
+      case "pi_3NvAs2CMTeU4V8Iq0l9DQvtk":
+        message = "valid until 2024-09-28 12:00:00";
+        break;
     }
     console.log("[usage] message.length is ", message.length);
     if (message.length == 0) {
