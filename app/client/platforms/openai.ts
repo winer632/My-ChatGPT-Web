@@ -178,35 +178,6 @@ export class ChatGPTApi implements LLMApi {
     });
     let message = "";
     console.log("[usage] begin");
-    switch (accessCode) {
-      case "pi_3NG9fCCMTeU4V8Iq8K9ebIaJ":
-      case "pi_3NKZZmCMTeU4V8Iq1VpRo27R":
-      case "pi_3NLlsxCMTeU4V8Iq0JzyqIva":
-      case "pi_3NLyqoCMTeU4V8Iq0RQA5TGE":
-      case "pi_3NMnhbCMTeU4V8Iq02PVh5BY":
-      case "pi_3NN5hhCMTeU4V8Iq1zQDewtq":
-      case "pi_3NNBMcCMTeU4V8Iq1gOQn9DE":
-      case "pi_3NNX6ZCMTeU4V8Iq02Fkv8D9":
-      case "pi_3NNr50CMTeU4V8Iq1PmCQoA5":
-      case "pi_3NNr4jCMTeU4V8Iq1Ohzqsky":
-        message = "valid until 2024-06-27 05:22:02";
-        break; // Break out of the switch statement
-      case "pi_3NXyRjCMTeU4V8Iq0dfEuQJ7": // liuqiao
-        message = "valid until 2024-07-26 12:22:02";
-        break;
-      case "pi_3NfeaNCMTeU4V8Iq0frdmvXl": // liuqiao
-        message = "valid until 2024-08-16 12:22:02";
-        break;
-      case "pi_3NpPBtCMTeU4V8Iq0o1NLDNF": // liuqiao
-        message = "valid until 2024-09-12 13:33:02";
-        break;
-      case "pi_3NvAs2CMTeU4V8Iq0l9DQvtk":
-        message = "valid until 2024-09-28 12:00:00";
-        break;
-      case "pi_3O5P65CMTeU4V8Iq0yExGzjR":
-        message = "valid until 2024-10-26 18:20:00";
-        break;
-    }
     console.log("[usage] message.length is ", message.length);
     if (message.length == 0) {
       // send a POST request with the payload and the agent

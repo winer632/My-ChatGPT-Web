@@ -80,31 +80,7 @@ export async function auth(req: NextRequest) {
     if (accessCode === null || accessCode === "") {
       console.log("accessCode===null");
       validation = "fail";
-    }
-
-    switch (accessCode) {
-      case "pi_3NG9fCCMTeU4V8Iq8K9ebIaJ":
-      case "pi_3NKZZmCMTeU4V8Iq1VpRo27R":
-      case "pi_3NLlsxCMTeU4V8Iq0JzyqIva":
-      case "pi_3NLyqoCMTeU4V8Iq0RQA5TGE":
-      case "pi_3NMnhbCMTeU4V8Iq02PVh5BY":
-      case "pi_3NN5hhCMTeU4V8Iq1zQDewtq":
-      case "pi_3NNBMcCMTeU4V8Iq1gOQn9DE":
-      case "pi_3NNX6ZCMTeU4V8Iq02Fkv8D9":
-      case "pi_3NNr50CMTeU4V8Iq1PmCQoA5":
-      case "pi_3NNr4jCMTeU4V8Iq1Ohzqsky":
-      case "pi_3NXyRjCMTeU4V8Iq0dfEuQJ7": // lizhenxing
-      case "pi_3NfeaNCMTeU4V8Iq0frdmvXl": // liuqiao
-      case "pi_3NpPBtCMTeU4V8Iq0o1NLDNF": // liuqiao
-      case "pi_3NvAs2CMTeU4V8Iq0l9DQvtk": // Mr Ju
-      case "pi_3O5P65CMTeU4V8Iq0yExGzjR": // lwj1214417@163.com
-        validation = "success"; // Set validation to success if accessCode matches any of the cases
-        break; // Break out of the switch statement
-      default:
-        validation = "failure"; // Set validation to failure if accessCode does not match any of the cases
-    }
-    console.log("before ValidityState, validation is ", validation);
-    if (validation === "failure") {
+    } else {
       await ValidityState(accessCode);
     }
   }
