@@ -8,6 +8,7 @@ import { ModelType } from "../store";
 
 import BotIcon from "../icons/bot.svg";
 import BlackBotIcon from "../icons/black-bot.svg";
+import UserIcon from "../icons/slightly-smile.svg";
 
 export function getEmojiUrl(unified: string, style: EmojiStyle) {
   return `https://cdn.staticfile.org/emoji-datasource-apple/14.0.0/img/${style}/64/${unified}.png`;
@@ -43,7 +44,7 @@ export function Avatar(props: { model?: ModelType; avatar?: string }) {
 
   return (
     <div className="user-avatar">
-      {props.avatar && <EmojiAvatar avatar={props.avatar} />}
+      <UserIcon className="user-avatar" />
     </div>
   );
 }
