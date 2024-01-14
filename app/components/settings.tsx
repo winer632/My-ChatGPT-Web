@@ -198,6 +198,7 @@ function UserPromptModal(props: { onClose?: () => void }) {
 }
 
 function formatVersionDate(t: string) {
+  console.log("t is ", t);
   const d = new Date(+t);
   const year = d.getUTCFullYear();
   const month = d.getUTCMonth() + 1;
@@ -267,7 +268,7 @@ export function Settings() {
   const showUsage = accessStore.isAuthorized();
   useEffect(() => {
     // checks per minutes
-    // checkUpdate();
+    checkUpdate();
     showUsage && checkUsage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -357,13 +358,13 @@ export function Settings() {
 
           <ListItem
             title={Locale.Settings.Update.Version(currentVersion ?? "unknown")}
-            subTitle={
-              checkingUpdate
-                ? Locale.Settings.Update.IsChecking
-                : hasNewVersion
-                ? Locale.Settings.Update.FoundUpdate(remoteId ?? "ERROR")
-                : Locale.Settings.Update.IsLatest
-            }
+            // subTitle={
+            //   checkingUpdate
+            //     ? Locale.Settings.Update.IsChecking
+            //     : hasNewVersion
+            //     ? Locale.Settings.Update.FoundUpdate(remoteId ?? "ERROR")
+            //     : Locale.Settings.Update.IsLatest
+            // }
           >
             {/* {checkingUpdate ? (
               <LoadingIcon />

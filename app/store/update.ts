@@ -54,7 +54,13 @@ export const useUpdateStore = create<UpdateStore>()(
         }));
 
         try {
-          const data = await (await fetch(FETCH_COMMIT_URL)).json();
+          const data = await (
+            await fetch(FETCH_COMMIT_URL, {
+              headers: {
+                Authorization: `token ${process.env.GITHUB_TOKEN}`, // 使用环境变量来存储你的GitHub令牌
+              },
+            })
+          ).json();
           const remoteCommitTime = data[0].commit.committer.date;
           const remoteId = new Date(remoteCommitTime).getTime().toString();
           set(() => ({

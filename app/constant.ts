@@ -1,5 +1,5 @@
-export const OWNER = "openai";
-export const REPO = "My-ChatGPT";
+export const OWNER = "winer632";
+export const REPO = "My-ChatGPT-Web";
 export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
 export const TIP_URL = `https://pay.bizoe.tech/`;
 export const README_URL = `https://blog.bizoe.tech/posts/chatgpt-china-cn`;

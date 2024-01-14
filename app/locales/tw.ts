@@ -82,7 +82,7 @@ const tw: LocaleType = {
       IsLatest: "已是最新版本",
       CheckUpdate: "檢查更新",
       IsChecking: "正在檢查更新...",
-      FoundUpdate: (x: string) => `發現新版本：${x}`,
+      // FoundUpdate: (x: string) => `發現新版本：${x}`,
       // GoToUpdate: "前往更新",
     },
     SendKey: "發送鍵",
