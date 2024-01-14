@@ -55,7 +55,7 @@ export function ModelConfigList(props: {
         <input
           type="number"
           min={100}
-          max={32000}
+          max={128000}
           value={props.modelConfig.max_tokens}
           onChange={(e) =>
             props.updateConfig(
