@@ -13,7 +13,7 @@ export const EN_MASKS: BuiltinMask[] = [
       },
     ],
     modelConfig: {
-      model: "gpt-4",
+      model: "gpt-4-1106-preview",
       temperature: 0.3,
       max_tokens: 2000,
       presence_penalty: 0,
@@ -53,7 +53,7 @@ export const EN_MASKS: BuiltinMask[] = [
       },
     ],
     modelConfig: {
-      model: "gpt-4",
+      model: "gpt-4-1106-preview",
       temperature: 0.5,
       max_tokens: 2000,
       presence_penalty: 0,
@@ -76,7 +76,7 @@ export const EN_MASKS: BuiltinMask[] = [
       },
     ],
     modelConfig: {
-      model: "gpt-3.5-turbo-16k-0613",
+      model: "gpt-3.5-turbo-1106",
       temperature: 0.5,
       max_tokens: 16000,
       presence_penalty: 0,
@@ -104,7 +104,7 @@ export const EN_MASKS: BuiltinMask[] = [
       },
     ],
     modelConfig: {
-      model: "gpt-4",
+      model: "gpt-4-1106-preview",
       temperature: 0.5,
       max_tokens: 2000,
       presence_penalty: 0,

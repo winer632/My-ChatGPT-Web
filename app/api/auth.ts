@@ -29,8 +29,9 @@ function parseApiKey(bearToken: string) {
 let message = "";
 let validation = "";
 
-async function ValidityState(accessCode: string) {
+async function ValidityState(accessCode: string, model: string) {
   console.log("[Auth] ValidityState accessCode: ", accessCode);
+  console.log("[Auth] ValidityState model: ", model);
   const result = await fetch("https://service.bizoe.tech/v1/auth", {
     method: "POST",
     headers: {
@@ -38,6 +39,7 @@ async function ValidityState(accessCode: string) {
     },
     body: JSON.stringify({
       access_key: accessCode,
+      model: model,
     }),
   })
     .then((result) => {
@@ -57,11 +59,14 @@ async function ValidityState(accessCode: string) {
     });
 }
 
-export async function auth(req: NextRequest) {
+export async function auth(req: NextRequest, model: string) {
   const authToken = req.headers.get("Authorization") ?? "";
   console.log("[Auth] got auth token:", authToken);
   console.log("[Auth] got auth token type:", typeof authToken);
   console.log("[Auth] got auth token length:", authToken.length);
+  console.log("[Auth] got req.body:", req);
+  console.log("[Auth] got req model:", model);
+
   // check if it is openai api key or user token
   const { accessCode, apiKey: token } = parseApiKey(authToken);
 
@@ -81,7 +86,7 @@ export async function auth(req: NextRequest) {
       console.log("accessCode===null");
       validation = "fail";
     } else {
-      await ValidityState(accessCode);
+      await ValidityState(accessCode, model);
     }
   }
 

@@ -47,7 +47,7 @@ export async function requestOpenai(req: NextRequest) {
 
   try {
     const res = await fetch(fetchUrl, fetchOptions);
-
+    console.log("[chat completions response]: ", res);
     if (res.status === 401) {
       // to prevent browser prompt for credentials
       const newHeaders = new Headers(res.headers);

@@ -7,9 +7,16 @@ async function handle(
   req: NextRequest,
   { params }: { params: { path: string[] } },
 ) {
+  console.log("[OpenAI Route] req ", req);
   console.log("[OpenAI Route] params ", params);
 
-  const authResult = await auth(req);
+  // Clone the request before consuming its body
+  const requestClone = req.clone();
+  const requestBody = await requestClone.json();
+  const model = requestBody.model; // Accesses the model field from the JSON object
+  console.log("[OpenAI Route] model is ", model);
+
+  const authResult = await auth(req, model);
   if (authResult.error) {
     return NextResponse.json(authResult, {
       status: 401,

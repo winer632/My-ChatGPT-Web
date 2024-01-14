@@ -235,7 +235,7 @@ export const useChatStore = create<ChatStore>()(
       async onUserInput(content) {
         const session = get().currentSession();
         const modelConfig = session.mask.modelConfig;
-
+        console.log("onNewMessage session.mask is", session.mask);
         const userMessage: ChatMessage = createMessage({
           role: "user",
           content,
@@ -348,6 +348,7 @@ export const useChatStore = create<ChatStore>()(
       getMessagesWithMemory() {
         const session = get().currentSession();
         const modelConfig = session.mask.modelConfig;
+        console.log("getMessagesWithMemory session.mask is", session.mask);
 
         // wont send cleared context messages
         const clearedContextMessages = session.messages.slice(
@@ -440,7 +441,7 @@ export const useChatStore = create<ChatStore>()(
           api.llm.chat({
             messages: topicMessages,
             config: {
-              model: "gpt-3.5-turbo-16k-0613",
+              model: "gpt-3.5-turbo-1106",
             },
             onFinish(message) {
               get().updateCurrentSession(
@@ -453,6 +454,7 @@ export const useChatStore = create<ChatStore>()(
         }
 
         const modelConfig = session.mask.modelConfig;
+        console.log("summarizeSession session.mask is", session.mask);
         const summarizeIndex = Math.max(
           session.lastSummarizeIndex,
           session.clearContextIndex ?? 0,
