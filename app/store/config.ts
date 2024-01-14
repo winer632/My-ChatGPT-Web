@@ -32,7 +32,7 @@ export const DEFAULT_CONFIG = {
   modelConfig: {
     model: "gpt-4-1106-preview" as ModelType,
     temperature: 0.5,
-    max_tokens: 16000,
+    max_tokens: 128000,
     presence_penalty: 0,
     sendMemory: true,
     historyMessageCount: 4,
