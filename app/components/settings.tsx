@@ -198,7 +198,7 @@ function UserPromptModal(props: { onClose?: () => void }) {
 }
 
 function formatVersionDate(t: string) {
-  console.log("t is ", t);
+  // console.log("t is ", t);
   const d = new Date(+t);
   const year = d.getUTCFullYear();
   const month = d.getUTCMonth() + 1;
