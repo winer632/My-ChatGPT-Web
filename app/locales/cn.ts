@@ -5,7 +5,7 @@ const cn = {
   Error: {
     Unauthorized:
       "访问密码不正确，或者超过了当天使用上限。请前往[设置](/#/settings)页输入正确的访问密码。如果是超出当天使用上限，每天凌晨三点会重置quota，请耐心等待。\
-      gpt-4-1106-preview模型每天使用量限制6条，gpt-3.5-turbo-0125模型每天使用量限制120条",
+      gpt-4-0125-preview模型每天使用量限制6条，gpt-3.5-turbo-0125模型每天使用量限制120条",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,
