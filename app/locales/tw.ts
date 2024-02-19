@@ -6,7 +6,7 @@ const tw: LocaleType = {
   Error: {
     Unauthorized:
       "目前您的狀態是未授權，或者使用超出了当天quota。請前往[設定](/#/settings)頁面輸入授權碼。如果是超出了当天的quota请耐心等待，每天凌晨三点quota会重置。\
-      gpt-4-1106-preview模型每天使用量限制15條，gpt-3.5-turbo-1106模型每天使用量限制60條",
+      gpt-4-1106-preview模型每天使用量限制6條，gpt-3.5-turbo-0125模型每天使用量限制120條",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 條對話`,
